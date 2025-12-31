@@ -6,7 +6,7 @@ export default function InvestmentCard(props: any) {
 
     return(
         <InvestmentCardContainer>
-            Olá
+            {props.data.name}
         </InvestmentCardContainer>
     );
 }

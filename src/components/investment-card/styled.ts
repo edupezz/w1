@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
-export const InvestmentCardContainer = styled.section`
+export const InvestmentCardContainer = styled.div`
 
-    width: 100%;
-    height: auto;
+    width: 250px;
+    height: 280px;
     background-color: olive;
+    border-radius: 8px;
 `

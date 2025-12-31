@@ -1,21 +1,22 @@
-import useinvestmentestments from '../../hooks/useInvestments';
+import useInvestments from '../../hooks/useInvestments';
 import InvestmentCard from '../investment-card';
+import { InvestmentsContainer } from './styled';
 
-export default function investmentestmentsList() {
-  const { data, loading, error } = useinvestmentestments();
+export default function InvestmentsList() {
+  const { data, loading } = useInvestments();
 
-  if (loading) return <div>Carregando investmentestimentos...</div>;
-  if (error) return <div>Erro ao carregar: {error.message}</div>;
-  if (!data || data.length === 0) return <div>Nenhum investmentestimento encontrado.</div>;
+  if (loading) return <div>Carregando investimentos...</div>;
+
+  if (!data || data.length === 0) return <div>Nenhum investimento encontrado.</div>;
 
   return (
-    <div>
-      {data?.map((investment: any) => (
-        <InvestmentCard key={investment.id ?? investment.symbol ?? JSON.stringify(investment)}>
-          <strong>{investment.name ?? investment.title ?? investment.symbol}</strong>
-          <span> — {investment.value ?? investment.amount ?? '-'}</span>
-        </InvestmentCard>
-      ))}
-    </div>
+    <InvestmentsContainer>
+      {data?.map((investment: any) => {
+         console.log(investment);
+         return (
+           <InvestmentCard data={investment} />
+         );
+      })}
+    </InvestmentsContainer>
   );
 }

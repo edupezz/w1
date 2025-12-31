@@ -11,9 +11,17 @@ function Bootstrap() {
 
     if (tokenToUse) {
       setAuthToken(tokenToUse);
+
+      if (!tokenFromStorage && tokenFromEnv) {
+        try {
+          localStorage.setItem('authToken', tokenFromEnv);
+        } catch (e) {
+          console.warn(e);
+        }
+      }
     }
 
-    return
+    return;
   }, []);
 
   return <App />;
